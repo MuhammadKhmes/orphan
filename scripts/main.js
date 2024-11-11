@@ -1,4 +1,4 @@
-let orphans = [];
+
 let validUsername = '';
 let validPassword = '';
 
