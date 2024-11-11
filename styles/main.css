@@ -24,12 +24,53 @@ main {
 }
 
 #login-form {
-    width: 300px;
+    width: 350px;
     margin: 100px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    text-align: center;
+}
+
+.login-logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+#login-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#login-form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+#login-form input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#login-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#login-form button:hover {
+    background-color: #45a049;
 }
 
 #search {
