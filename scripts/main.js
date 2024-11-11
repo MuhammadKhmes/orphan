@@ -24,6 +24,20 @@ function encrypt(filePath, outputFilePath) {
 }
 
 encrypt('orphans.xlsx', 'orphans.enc');
+function decrypt(filePath, outputFilePath) {
+    const decipher = crypto.createDecipheriv(algorithm, key, iv);
+    const input = fs.createReadStream(filePath);
+    const output = fs.createWriteStream(outputFilePath);
+
+    input.pipe(decipher).pipe(output);
+
+    output.on('finish', () => {
+        console.log('File decrypted successfully.');
+    });
+}
+
+// فك تشفير الملف قبل تحميل البيانات
+decrypt('orphans.enc', 'orphans_decrypted.xlsx');
 
 function loadCredentials() {
     fetch('credentials.json')
