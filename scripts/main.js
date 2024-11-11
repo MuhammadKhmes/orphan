@@ -36,11 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const password = document.getElementById('password').value;
             const errorMessage = document.getElementById('error-message');
             
-            console.log('Username:', username);
-            console.log('Password:', password);
-            console.log('Valid Username:', validUsername);
-            console.log('Valid Password:', validPassword);
-            
+            // إزالة عرض اسم المستخدم وكلمة المرور في وحدة التحكم
             if (username === validUsername && password === validPassword) {
                 console.log('Login successful');
                 errorMessage.textContent = ''; // مسح رسالة الخطأ
