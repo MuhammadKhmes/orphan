@@ -1,6 +1,3 @@
-let validUsername = '';
-let validPassword = '';
-
 function loadCredentials() {
     fetch('credentials.json')
         .then(response => response.json())
