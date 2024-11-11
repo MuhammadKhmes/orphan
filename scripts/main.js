@@ -7,7 +7,7 @@ function loadCredentials() {
         .then(data => {
             validUsername = data.username;
             validPassword = data.password;
-            console.log('Credentials loaded:', validUsername, '********'); // إخفاء كلمة المرور
+            console.log('Credentials loaded successfully'); // إخفاء اسم المستخدم وكلمة المرور
         })
         .catch(error => console.error('Error loading credentials:', error));
 }
