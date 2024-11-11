@@ -1,4 +1,3 @@
-
 let validUsername = '';
 let validPassword = '';
 
