@@ -1,4 +1,4 @@
-// تحميل بيانات الأيتام من ملف Excel
+// تأكد من تعريف المتغير مرة واحدة فقط
 let orphans = [];
 
 function loadExcelData() {
@@ -15,32 +15,38 @@ function loadExcelData() {
         .catch(error => console.error('Error loading Excel file:', error));
 }
 
-document.getElementById('login').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const errorMessage = document.getElementById('error-message');
-    
-    console.log('Username:', username);
-    console.log('Password:', password);
-    
-    // بيانات الاعتماد الصحيحة (يمكنك تغييرها أو جلبها من قاعدة بيانات)
-    const validUsername = 'admin';
-    const validPassword = 'admin';
-    
-    if (username === validUsername && password === validPassword) {
-        console.log('Login successful');
-        errorMessage.textContent = ''; // مسح رسالة الخطأ
-        document.getElementById('login-form').style.display = 'none';
-        document.getElementById('content').style.display = 'block';
-    } else {
-        console.log('Login failed');
-        errorMessage.textContent = 'اسم المستخدم أو كلمة المرور غير صحيحة.';
-    }
-});
-
 document.addEventListener('DOMContentLoaded', function() {
+    // تأكد من وجود العنصر في DOM قبل إضافة مستمع الحدث
+    const loginForm = document.getElementById('login');
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            
+            console.log('Username:', username);
+            console.log('Password:', password);
+            
+            // بيانات الاعتماد الصحيحة (يمكنك تغييرها أو جلبها من قاعدة بيانات)
+            const validUsername = 'admin';
+            const validPassword = 'admin';
+            
+            if (username === validUsername && password === validPassword) {
+                console.log('Login successful');
+                errorMessage.textContent = ''; // مسح رسالة الخطأ
+                document.getElementById('login-form').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            } else {
+                console.log('Login failed');
+                errorMessage.textContent = 'اسم المستخدم أو كلمة المرور غير صحيحة.';
+            }
+        });
+    } else {
+        console.error('Element with id "login" not found.');
+    }
+
     loadExcelData();
 
     const searchForm = document.getElementById('searchForm');
