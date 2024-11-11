@@ -32,12 +32,24 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: white;
     text-align: center;
+    position: relative; /* إضافة هذه الخاصية */
+}
+
+#login-form::before {
+    content: "";
+    position: absolute;
+    top: 10px; /* تعديل المسافة من الأعلى */
+    left: 10px; /* تعديل المسافة من اليسار */
+    width: 100px; /* تحديد عرض مناسب */
+    height: 100px; /* تحديد ارتفاع مناسب */
+    background: url('../images/file.PNG') no-repeat center center;
+    background-size: contain; /* لضبط حجم الصورة */
 }
 
 .login-logo {
     width: 100px;
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* تعديل المسافة السفلية */
 }
 
 #login-form h2 {
@@ -127,4 +139,10 @@ footer {
     color: white;
     text-align: center;
     padding: 1em 0;
+}
+
+.sponsor-text {
+    margin-top: 10px;
+    color: #666;
+    font-size: 14px;
 }
