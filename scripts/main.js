@@ -1,5 +1,17 @@
-// تأكد من تعريف المتغير مرة واحدة فقط
 let orphans = [];
+let validUsername = '';
+let validPassword = '';
+
+function loadCredentials() {
+    fetch('credentials.json')
+        .then(response => response.json())
+        .then(data => {
+            validUsername = data.username;
+            validPassword = data.password;
+            console.log('Credentials loaded:', validUsername, validPassword); // تحقق من تحميل بيانات الاعتماد
+        })
+        .catch(error => console.error('Error loading credentials:', error));
+}
 
 function loadExcelData() {
     const url = 'orphans.xlsx';
@@ -16,6 +28,8 @@ function loadExcelData() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+    loadCredentials(); // تحميل بيانات الاعتماد
+
     // تأكد من وجود العنصر في DOM قبل إضافة مستمع الحدث
     const loginForm = document.getElementById('login');
     if (loginForm) {
@@ -28,10 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             console.log('Username:', username);
             console.log('Password:', password);
-            
-            // بيانات الاعتماد الصحيحة (يمكنك تغييرها أو جلبها من قاعدة بيانات)
-            const validUsername = 'admin';
-            const validPassword = 'admin';
+            console.log('Valid Username:', validUsername);
+            console.log('Valid Password:', validPassword);
             
             if (username === validUsername && password === validPassword) {
                 console.log('Login successful');
