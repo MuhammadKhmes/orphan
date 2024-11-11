@@ -1,6 +1,7 @@
 let orphans = [];
 let validUsername = '';
 let validPassword = '';
+
 function loadCredentials() {
     fetch('credentials.json')
         .then(response => response.json())
@@ -11,6 +12,7 @@ function loadCredentials() {
         })
         .catch(error => console.error('Error loading credentials:', error));
 }
+
 function loadExcelData() {
     const url = 'orphans.xlsx';
     fetch(url)
@@ -20,7 +22,7 @@ function loadExcelData() {
             const sheetName = workbook.SheetNames[0]; // استخدم اسم الورقة الأولى
             const sheet = workbook.Sheets[sheetName];
             orphans = XLSX.utils.sheet_to_json(sheet);
-            console.log(orphans); // تحقق من البيانات المحملة في وحدة التحكم
+            // console.log(orphans); // تحقق من البيانات المحملة في وحدة التحكم (تم إخفاؤه)
         })
         .catch(error => console.error('Error loading Excel file:', error));
 }
