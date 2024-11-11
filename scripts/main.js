@@ -1,6 +1,29 @@
 let orphans = [];
 let validUsername = '';
 let validPassword = '';
+const crypto = require('crypto');
+const fs = require('fs');
+
+const algorithm = 'aes-256-cbc';
+const key = crypto.randomBytes(32);
+const iv = crypto.randomBytes(16);
+
+function encrypt(filePath, outputFilePath) {
+  const cipher = crypto.createCipheriv(algorithm, key, iv);
+  const input = fs.createReadStream(filePath);
+  const output = fs.createWriteStream(outputFilePath);
+
+  input.pipe(cipher).pipe(output);
+
+  output.on('finish', () => {
+    console.log('File encrypted successfully.');
+    // Save the key and iv securely
+    fs.writeFileSync('key.bin', key);
+    fs.writeFileSync('iv.bin', iv);
+  });
+}
+
+encrypt('orphans.xlsx', 'orphans.enc');
 
 function loadCredentials() {
     fetch('credentials.json')
